@@ -27,7 +27,7 @@ public class R4MixTestSuite extends BaseSuite {
 
     @BeforeAll
     void beforeAll() {
-        BaseExampleTest.setDbSource(BaseExampleTest.DB_SOURCE.POSTGRESQL);
+        BaseExampleTest.setDbSource(BaseExampleTest.DB_SOURCE.H2);
         BaseExampleTest.setTestType(BaseExampleTest.TEST_TYPE.MIX);
         BaseExampleTest.setExampleFolder(String.join(File.separator, "src","test","resources","example","r4"));
         BaseExampleTest.setRdb2olFolder(String.join(File.separator, "rdb2ol","r4","mix"));
