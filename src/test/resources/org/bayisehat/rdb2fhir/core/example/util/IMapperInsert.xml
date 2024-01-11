@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.bayisehat.rdb2fhir.core.example.util.IMapperInsert">
+
+    <insert id="insert">
+        INSERT INTO ${tableName}
+        <foreach item="columnName" index="index" collection="columnList"
+                 open="(" separator="," close=")" nullable="true">
+            ${columnName}
+        </foreach>
+        VALUES
+        <foreach item="group" index="index" collection="groupList"
+                 separator=",">
+            <foreach item="value" index="index2" collection="group"
+                     open="(" separator="," close=")"  nullable="true">
+                #{value}
+            </foreach>
+        </foreach>
+    </insert>
+
+</mapper>

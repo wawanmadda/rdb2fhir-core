@@ -1,0 +1,530 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct:  <http://snomed.info/id#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+fhir:000010  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "PEKALONGAN" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "1990-01-01"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "-" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "-" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000010" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "GATOT SATRIYO" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "adminadmin.com" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "081271017549" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000010" ] .
+
+fhir:000022  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "TES" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "1957-03-11"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "-" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "3374135702570001" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000022" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "RUDI SANTOSO" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "123123213" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000022" ] .
+
+fhir:000004  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "ALAMAT" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "1987-07-20"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "-" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "9104224606000005" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000004" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "DEPIYANTO" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "085642552058" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000004" ] .
+
+fhir:000011  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "JL. DOKTER CIPTI RT 01/RW01" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "1990-02-21"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "-" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000011" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "0976565436789" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "SETIYAWAN KRISTANTO" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "0987676657" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000011" ] .
+
+fhir:1402  rdf:type              fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "123" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "1988-02-02"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "-" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "1402" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "9104223107000004" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "HASRUN OGANDA" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "082298008985" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "1402" ] .
+
+fhir:000005  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "ALAMAT" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "1986-07-20"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "-" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000005" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "9201076001000007" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "ROBY ALAMSYAH" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "0858660612459" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000005" ] .
+
+<http://hl7.org/fhir/->
+        rdf:type                 fhir:Patient ;
+        fhir:Patient.birthDate   [ fhir:value  "2022-08-03"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "-" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "-" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "-" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "-" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "-" ] .
+
+fhir:000006  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "PAJANGAN BANTUL" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "2017-08-03"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "WINDIARTO" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "9201076407000009" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000006" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "SAKHA HAMIZAN AQILA" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "081575751220" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000006" ] .
+
+fhir:000013  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "BANTUL" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "1990-01-01"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "-" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "-" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000013" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "PARAMITA RAMADANI" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "testes.yahoo.com" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "0812345678" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000013" ] .
+
+fhir:000019  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "-" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "1994-06-22"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "-" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000019" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "-" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "RIZKI AMALIA" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000019" ] .
+
+fhir:000020  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "asas" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "2023-05-29"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "sasas" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000020" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "-" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "sasas" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "0" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000020" ] .
+
+fhir:000002  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "ALAMAT" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "2022-06-28"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "-" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "9201394901000008" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000002" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "DEWI EKAWATI" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "08123442332" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000002" ] .
+
+fhir:000014  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "GRESIK" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "2023-05-14"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "WAWAN" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000014" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "-" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "BY. NYONYA RAHMI" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "0" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000014" ] .
+
+fhir:000008  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "ALAMAT" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "2022-12-28"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "2" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000008" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "2" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "1212" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "2" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "2" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000008" ] .
+
+[ rdf:type           fhir:Bundle ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000010 ;
+                       fhir:index                  15
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000006 ;
+                       fhir:index                  0
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000004 ;
+                       fhir:index                  2
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000005 ;
+                       fhir:index                  1
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000002 ;
+                       fhir:index                  5
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000013 ;
+                       fhir:index                  6
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  <http://hl7.org/fhir/-> ;
+                       fhir:index                  9
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:1402 ;
+                       fhir:index                  14
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000022 ;
+                       fhir:index                  8
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000011 ;
+                       fhir:index                  7
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000008 ;
+                       fhir:index                  11
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000020 ;
+                       fhir:index                  17
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000021 ;
+                       fhir:index                  16
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000009 ;
+                       fhir:index                  10
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000003 ;
+                       fhir:index                  3
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:1303 ;
+                       fhir:index                  13
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000014 ;
+                       fhir:index                  4
+                     ] ;
+  fhir:Bundle.entry  [ fhir:Bundle.entry.resource  fhir:000019 ;
+                       fhir:index                  12
+                     ] ;
+  fhir:Bundle.type   [ fhir:value  "collection" ] ;
+  fhir:nodeRole      fhir:treeRoot
+] .
+
+fhir:000021  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "-" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "1985-05-22"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "TES" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "-" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000021" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "TES PASIEN" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000021" ] .
+
+fhir:1303  rdf:type              fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "RT 01 RW 01" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "1983-01-27"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "-" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "1303" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "-" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "WIWIK LESTARI" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "081314188603" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "1303" ] .
+
+fhir:000003  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "-" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "1997-05-22"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "PAIJO" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "9104224509000003" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000003" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "HAFIZ HARIYADI" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "-" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "085755655894" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000003" ] .
+
+fhir:000009  rdf:type            fhir:Patient ;
+        fhir:Patient.address     [ fhir:Address.text  [ fhir:value  "PEKALONGAN" ] ;
+                                   fhir:index         0
+                                 ] ;
+        fhir:Patient.birthDate   [ fhir:value  "1990-01-01"^^xsd:date ] ;
+        fhir:Patient.contact     [ fhir:Patient.contact.name  [ fhir:HumanName.text  [ fhir:value  "-" ]
+                                                              ] ;
+                                   fhir:index                 0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "-" ] ;
+                                   fhir:index             0
+                                 ] ;
+        fhir:Patient.identifier  [ fhir:Identifier.value  [ fhir:value  "000009" ] ;
+                                   fhir:index             1
+                                 ] ;
+        fhir:Patient.name        [ fhir:HumanName.text  [ fhir:value  "WAHYUDI KURNIAWAN" ] ;
+                                   fhir:index           0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "083875000083" ] ;
+                                   fhir:index               0
+                                 ] ;
+        fhir:Patient.telecom     [ fhir:ContactPoint.value  [ fhir:value  "adminadmin.com" ] ;
+                                   fhir:index               1
+                                 ] ;
+        fhir:Resource.id         [ fhir:value  "000009" ] .

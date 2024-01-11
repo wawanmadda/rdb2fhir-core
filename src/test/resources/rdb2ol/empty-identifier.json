@@ -1,0 +1,122 @@
+[
+  {
+    "class": "Patient",
+    "view": {
+      "tableName": "pasien"
+    },
+    "identifier": [],
+    "mapping": [
+      {
+        "path": "Patient.id",
+        "column": [
+          "no_rkm_medis"
+        ]
+      },
+      {
+        "path": "Patient.gender",
+        "column": [
+          "jk"
+        ],
+        "function": "result = 'male' if (getValue('jk') == 'L') else 'female'"
+      },
+      {
+        "path": "Patient.telecom[0].value",
+        "column": [
+          "no_tlp"
+        ]
+      },
+      {
+        "path": "Patient.telecom[0].system",
+        "function": "result = 'phone'"
+      },
+      {
+        "path": "Patient.telecom[1].value",
+        "column": [
+          "email"
+        ]
+      },
+      {
+        "path": "Patient.telecom[1].system",
+        "function": "result = 'email'"
+      },
+      {
+        "path": "Patient.maritalStatus.text",
+        "column": [
+          "stts_nikah"
+        ],
+        "function": "result = 'married' if (getValue('stts_nikah') == 'MENIKAH') else 'unknown'"
+      },
+      {
+        "path": "Patient.name.text",
+        "column": [
+          "nm_pasien"
+        ]
+      },
+      {
+        "path": "Patient.identifier[0].value",
+        "column": [
+          "no_ktp"
+        ]
+      },
+      {
+        "path": "Patient.identifier[0].system",
+        "function": "result = 'CZ'"
+      },
+      {
+        "path": "Patient.identifier[1].value",
+        "column": [
+          "no_rkm_medis"
+        ]
+      },
+      {
+        "path": "Patient.identifier[1].system",
+        "function": "result = 'MR'"
+      },
+      {
+        "path": "Patient.contact.relationship.text",
+        "function": "result = 'ibu'",
+        "column": [
+          "keluarga"
+        ]
+      },
+      {
+        "path": "Patient.contact.name.text",
+        "column": [
+          "namakeluarga"
+        ]
+      },
+      {
+        "path": "Patient.birthDate",
+        "column": [
+          "tgl_lahir"
+        ]
+      },
+      {
+        "path": "Patient.address.text",
+        "column": [
+          "alamat"
+        ]
+      },
+      {
+        "path": "Patient.identifier.type.text",
+        "function": "result = 'official'"
+      }
+    ]
+  },
+  {
+    "class": "Patient",
+    "view": {
+      "tableName": "pasien_mati"
+    },
+    "identifier": [],
+    "mapping": [
+      {
+        "path": "active",
+        "column": [
+          "no_rkm_medis"
+        ],
+        "function": "result = 'false' if getValue('no_rkm_medis') else 'true'"
+      }
+    ]
+  }
+]

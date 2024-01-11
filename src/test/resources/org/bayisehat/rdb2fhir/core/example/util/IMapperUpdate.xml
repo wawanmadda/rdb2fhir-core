@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.bayisehat.rdb2fhir.core.example.util.IMapperUpdate">
+
+    <update id="createTable">
+        CREATE TABLE ${tableName} (
+            <foreach item="columnName" index="index" collection="columnList"
+                     separator=","  nullable="true">
+                ${columnName} text
+            </foreach>
+        )
+    </update>
+
+    <update id="dropTable">
+        DROP TABLE IF EXISTS ${tableName}
+    </update>
+
+</mapper>

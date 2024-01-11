@@ -1,0 +1,32 @@
+[
+  {
+    "class": "Patient",
+    "view": {
+      "tableName": "pasien"
+    },
+    "identifier": [
+      {
+        "path": "",
+        "column": [
+          "no_rkm_medis"
+        ]
+      }
+    ],
+    "mapping" : []
+  },
+  {
+    "class": "Patient",
+    "view": {
+      "tableName": "pasien_mati"
+    },
+    "identifier": [
+      {
+        "path": "",
+        "column": [
+          "no_rkm_medis"
+        ]
+      }
+    ],
+    "mapping" : []
+  }
+]
