@@ -6,11 +6,40 @@
 
 RDB2FHIR stands for *Relational Database To Fast Healthcare Interoperability Resources* (FHIR). 
 RDB2FHIR uses a mapping language, known as [**RDB2OL**](#rdb2ol), to generates FHIR resources from a relational databases.
-Currently RDB2FHIR only support FHIR version 4.0.1.
+Currently, RDB2FHIR only support FHIR version 4.0.1.
+
 ---
 
 ## Minimum System Requirements
 - Java version 17
+
+___
+
+## Usage
+
+You can use RDB2FHIR by either importing it as a library for your project or run the executable jar.
+To run RD2FHIR as an executable jar, first you need to [compile the source code](#compiling-rdb2fhir) or download the already compiled [here](https://github.com/wawanmadda/rdb2fhir-core/releases).
+
+```
+Usage: java -jar rdb2fhir.jar [-hV] d=RDBMS [-f=FORMAT] [-P=PASSWORD] -u=URL [-U=USER] <RDB2OL
+path> <output path>
+A tool to generate FHIR resources from a relational database
+RDB2OL path       path to mapping file (RDB2OL)
+output path       path to generated FHIR resources
+d, --db=RDBMS     Relational Database Management System: POSTGRESQL, MYSQL
+-f, --format=FORMAT   FHIR Output Format: JSON, XML, or RDF
+-h, --help            Show this help message and exit.
+-P, --pass=PASSWORD   Database password
+-u, --url=URL         Database URL
+-U, --user=USER       Database user
+-V, --version         Print version information and exit.
+```
+
+For example:
+```shell
+% java -jar rdb2fhir.jar --db=POSTGRESQL --format=JSON --user=postgres --pass=postgres --url=localhost:5432/postgres /path/to/rdb2ol.json /path/to/output
+```
+
 ___
 
 ## Test Suite
@@ -35,31 +64,6 @@ modify the file `BaseExampleTest.java`, `USMixTestSuite.java`, and `R4MixTestSui
 You can see the generated RDB2OL in here and the generated database in here.
 
 ___
-
-## Usage
-
-You can use RDB2FHIR by either importing it as a library for your project or run the executable jar.
-To run RD2FHIR as an executable jar, first you need to [compile the source code](#compiling-rdb2fhir) or download the already compiled [here](https://github.com/wawanmadda/rdb2fhir-core/releases).
-    
-```
-Usage: java -jar rdb2fhir.jar [-hV] d=RDBMS [-f=FORMAT] [-P=PASSWORD] -u=URL [-U=USER] <RDB2OL
-path> <output path>
-A tool to generate FHIR resources from a relational database
-RDB2OL path       path to mapping file (RDB2OL)
-output path       path to generated FHIR resources
-d, --db=RDBMS     Relational Database Management System: POSTGRESQL, MYSQL
--f, --format=FORMAT   FHIR Output Format: JSON, XML, or RDF
--h, --help            Show this help message and exit.
--P, --pass=PASSWORD   Database password
--u, --url=URL         Database URL
--U, --user=USER       Database user
--V, --version         Print version information and exit.
-```
-
-For example:
-```shell
-% java -jar rdb2fhir.jar --db=POSTGRESQL --format=JSON --user=postgres --pass=postgres --url=localhost:5432/postgres /path/to/rdb2ol.json /path/to/output
-```
 
 ## Compiling RDB2FHIR
 
