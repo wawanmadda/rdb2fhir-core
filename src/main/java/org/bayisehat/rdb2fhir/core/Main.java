@@ -15,7 +15,7 @@ import java.io.*;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
-@Command(name = "RDB2FHIR",
+@Command(name = "java -jar rdb2fhir.jar",
         mixinStandardHelpOptions = true,
         version = "1.0",
         description = "A tool to generate FHIR resources from a relational database")
