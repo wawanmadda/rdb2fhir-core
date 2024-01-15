@@ -9,7 +9,11 @@ RDB2FHIR uses a mapping language, known as [**RDB2OL**](#rdb2ol), to generates F
 Currently RDB2FHIR only support FHIR version 4.0.1.
 ---
 
-## Test
+## Minimum System Requirements
+- Java version 17
+___
+
+## Test Suite
 
 RDB2FHIR was validated against FHIR R4 Examples and US Core Profile Examples. 
 The idea was saving the examples to a relational database and generating their RDB2OL. 
@@ -32,13 +36,13 @@ You can see the generated RDB2OL in here and the generated database in here.
 
 ___
 
-# Usage
+## Usage
 
 You can use RDB2FHIR by either importing it as a library for your project or run the executable jar.
-To run RD2FHIR as an executable jar, first you need to [compile the source code](#compiling-rdb2fhir) or download the already compiled [here]().
+To run RD2FHIR as an executable jar, first you need to [compile the source code](#compiling-rdb2fhir) or download the already compiled [here](https://github.com/wawanmadda/rdb2fhir-core/releases).
     
 ```
-Usage: RDB2FHIR [-hV] d=RDBMS [-f=FORMAT] [-P=PASSWORD] -u=URL [-U=USER] <RDB2OL
+Usage: java -jar rdb2fhir.jar [-hV] d=RDBMS [-f=FORMAT] [-P=PASSWORD] -u=URL [-U=USER] <RDB2OL
 path> <output path>
 A tool to generate FHIR resources from a relational database
 RDB2OL path       path to mapping file (RDB2OL)
@@ -63,12 +67,11 @@ You need to compile RDB2FHIR to be able to execute it as an executable jar:
 
 1. Unpack your zip file in whatever directory you want (use one that you can easily get to from your command line).
 2. Open a shell/terminal (command prompt) and go to the directory where you put the unpacked files.
-3. On the shell prompt type `mvn clean install`. This will compile RDB2FHIR. 
+3. On the shell prompt type `mvn package`. This will compile RDB2FHIR. 
 It may take a couple of minutes the first time because maven will download many libraries 
-(you need an internet connection for this to work). 
-You can also skip the tests by executing `mvn clean install -DskipTests=true`.
+(you need an internet connection for this to work).
 
-The compiled RDB2FHIR can be downloaded [here]().
+The compiled RDB2FHIR can be downloaded [here](https://github.com/wawanmadda/rdb2fhir-core/releases).
 
 ---
 
