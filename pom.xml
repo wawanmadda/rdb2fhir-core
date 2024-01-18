@@ -122,6 +122,12 @@
             <version>4.7.5</version>
         </dependency>
 
+        <dependency>
+            <groupId>net.sourceforge.csvjdbc</groupId>
+            <artifactId>csvjdbc</artifactId>
+            <version>1.0.35</version>
+        </dependency>
+
     </dependencies>
 
 
@@ -138,7 +144,7 @@
                         <!-- This test for FHIR examples test suite -->
                         <exclude>**/example/*.java</exclude>
 
-                        <!-- This test needs docker and/or rdbms -->
+                        <!-- This test needs docker and/or DATASOURCE -->
                         <exclude>**/ConnectionServiceTest.java</exclude>
                         <exclude>**/MainTest.java</exclude>
                     </excludes>
