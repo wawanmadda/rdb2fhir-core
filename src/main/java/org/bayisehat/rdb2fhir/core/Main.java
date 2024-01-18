@@ -27,7 +27,7 @@ public class Main implements Callable<Integer> {
         POSTGRESQL, MYSQL, CSV
     }
 
-    @Option(names = { "-u", "--url" }, paramLabel = "URL", description = "Data Source URL/Path", required = true)
+    @Option(names = { "-u", "--url" }, paramLabel = "URL/PATH", description = "Data Source URL/Path", required = true)
     private String url;
 
     @Option(names = { "-U", "--user" }, paramLabel = "USER", description = "Data Source user (default: empty string)", defaultValue = "")
@@ -36,7 +36,7 @@ public class Main implements Callable<Integer> {
     @Option(names = { "-P", "--pass" }, paramLabel = "PASSWORD", description = "Data Source password (default: empty string)", defaultValue = "")
     private String password;
 
-    @Option(names = { "s", "--source"}, paramLabel = "DATA SOURCE", description = "POSTGRESQL, MYSQL, or CSV", required = true)
+    @Option(names = { "-s", "--source"}, paramLabel = "DATA_SOURCE_SYSTEM", description = "POSTGRESQL, MYSQL, or CSV", required = true)
     private DATA_SOURCE_SYSTEM dataSource;
 
     @Option(names = { "-f", "--format" }, paramLabel = "FORMAT", description = "FHIR Output Format: JSON (default), XML, or RDF", defaultValue = "JSON")
