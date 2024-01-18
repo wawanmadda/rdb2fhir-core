@@ -146,7 +146,6 @@
 
                         <!-- This test needs docker and/or DATASOURCE -->
                         <exclude>**/ConnectionServiceTest.java</exclude>
-                        <exclude>**/MainTest.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>
