@@ -1,0 +1,24 @@
+[
+  {
+    "class": "Patient",
+    "view": {
+      "tableName": "Purchase"
+    },
+    "identifier": [
+      {
+        "path": "Patient",
+        "column": [
+          "AccountNo"
+        ]
+      }
+    ],
+    "mapping" : [
+      {
+        "path": "Patient.id",
+        "column": [
+          "AccountNo"
+        ]
+      }
+    ]
+  }
+]

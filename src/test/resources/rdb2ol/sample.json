@@ -1,0 +1,24 @@
+[
+  {
+    "class": "Patient",
+    "view": {
+      "tableName": "sample"
+    },
+    "identifier": [
+      {
+        "path": "Patient",
+        "column": [
+          "ID"
+        ]
+      }
+    ],
+    "mapping" : [
+      {
+        "path": "Patient.id",
+        "column": [
+          "ID"
+        ]
+      }
+    ]
+  }
+]
