@@ -6,6 +6,8 @@ import org.bayisehat.rdb2fhir.core.RDB2FHIR.OutputFormat;
 import org.bayisehat.rdb2fhir.core.databasefetcher.ConnectionService;
 import org.bayisehat.rdb2fhir.core.databasefetcher.DatabaseFetcher;
 import org.bayisehat.rdb2fhir.core.fetcher.ResultQuadrupleFactory;
+import org.bayisehat.rdb2fhir.core.jdbc.DriverFactory;
+import org.bayisehat.rdb2fhir.core.jdbc.IDriver;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
@@ -21,21 +23,21 @@ import java.util.stream.Collectors;
         description = "A tool to generate FHIR resources from a relational database")
 public class Main implements Callable<Integer> {
 
-    public enum RDBMS{
-        POSTGRESQL, MYSQL
+    public enum DATA_SOURCE_SYSTEM {
+        POSTGRESQL, MYSQL, CSV
     }
 
-    @Option(names = { "-u", "--url" }, paramLabel = "URL", description = "Database URL", required = true)
+    @Option(names = { "-u", "--url" }, paramLabel = "URL", description = "Data Source URL/Path", required = true)
     private String url;
 
-    @Option(names = { "-U", "--user" }, paramLabel = "USER", description = "Database user (default: empty string)", defaultValue = "")
+    @Option(names = { "-U", "--user" }, paramLabel = "USER", description = "Data Source user (default: empty string)", defaultValue = "")
     private String user;
 
-    @Option(names = { "-P", "--pass" }, paramLabel = "PASSWORD", description = "Database password (default: empty string)", defaultValue = "")
+    @Option(names = { "-P", "--pass" }, paramLabel = "PASSWORD", description = "Data Source password (default: empty string)", defaultValue = "")
     private String password;
 
-    @Option(names = { "d", "--db"}, paramLabel = "RDBMS", description = "Relational Database Management System: POSTGRESQL, MYSQL", required = true)
-    private RDBMS rdbms;
+    @Option(names = { "s", "--source"}, paramLabel = "DATA SOURCE", description = "POSTGRESQL, MYSQL, or CSV", required = true)
+    private DATA_SOURCE_SYSTEM dataSource;
 
     @Option(names = { "-f", "--format" }, paramLabel = "FORMAT", description = "FHIR Output Format: JSON (default), XML, or RDF", defaultValue = "JSON")
     private OutputFormat format;
@@ -54,26 +56,26 @@ public class Main implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        run(rdbms, url, user, password, format, rdb2olPath, outputPath);
+         run(dataSource, url, user, password, format, rdb2olPath, outputPath);
         return 0;
     }
 
-    public void run(RDBMS rdbms, String url, String user, String password,
+    public void run(DATA_SOURCE_SYSTEM dataSourceSystem, String url, String user, String password,
                     OutputFormat format, String rdb2olPath, String outputPath) throws Exception {
         RDB2FHIR rdb2fhir = RDB2FHIRFactory.getInstance(
                 new DatabaseFetcher(
-                        getConnectionService(rdbms, url, user, password),
+                        getConnectionService(dataSourceSystem, url, user, password),
                         new ResultQuadrupleFactory()),
                 FhirContext.forR4());
 
         rdb2fhir.setOutputFormat(format);
 
-        generate(rdb2fhir, format, rdb2olPath, outputPath);
+        write(generate(rdb2fhir, format, rdb2olPath), format, outputPath);
     }
 
-    private void generate(RDB2FHIR rdb2FHIR, OutputFormat format, String rdb2olPath, String outputPath) throws Exception {
-        String output = rdb2FHIR.transform(getRdb2ol(rdb2olPath));
-        write(output, format, outputPath);
+    private String generate(RDB2FHIR rdb2FHIR, OutputFormat format, String rdb2olPath) throws Exception {
+        return rdb2FHIR.transform(getRdb2ol(rdb2olPath));
+
     }
 
     private void write(String str, OutputFormat format, String path) throws Exception {
@@ -85,34 +87,12 @@ public class Main implements Callable<Integer> {
             default -> throw new Exception("Unsupported Output Format");
         }
 
-        FileUtils.writeStringToFile(new File(path + File.separator + fileName), str, (String) null);
+        FileUtils.writeStringToFile(new File(path.equals("") ? fileName : path + File.separator + fileName), str, (String) null);
     }
 
-    private ConnectionService getConnectionService(RDBMS rdbms, String url, String userName, String password) throws Exception {
-        return new ConnectionService(getJdbcDriver(rdbms), getJdbcUrl(rdbms, url), userName, password);
-    }
-
-    private String getJdbcDriver(RDBMS rdbms) throws Exception {
-        String jdbcDriver;
-        switch (rdbms) {
-            case MYSQL -> jdbcDriver = "com.mysql.cj.jdbc.Driver";
-            case POSTGRESQL -> jdbcDriver = "org.postgresql.Driver";
-            default -> throw new Exception("Unsupported RDBMS");
-        }
-
-        return jdbcDriver;
-    }
-
-    private String getJdbcUrl(RDBMS rdbms, String url) throws Exception {
-        String jdbcUrl;
-        String prefix = "jdbc:";
-        switch (rdbms) {
-            case MYSQL -> jdbcUrl = prefix + "mysql://" + url;
-            case POSTGRESQL -> jdbcUrl = prefix +  "postgresql://" + url;
-            default -> throw new Exception("Unsupported RDBMS");
-        }
-
-        return jdbcUrl;
+    private ConnectionService getConnectionService(DATA_SOURCE_SYSTEM dataSourceSystem, String url, String userName, String password) throws Exception {
+        IDriver driver = new DriverFactory().getDriver(dataSourceSystem);
+        return new ConnectionService(driver.getJdbcDriver(), driver.getJdbcUrl(url), userName, password);
     }
 
     private String getRdb2ol(String path) throws FileNotFoundException {
