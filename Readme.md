@@ -339,6 +339,10 @@ For example:
   ```
   Patient.contained{Patient}.active
   ```
+- Slice: FHIRPath may also contain slice
+  ```
+  Patient.extension:race.valueCode
+  ```
 - Primitive Data Type: In an element of [primitive data type](https://hl7.org/fhir/R4/datatypes.html#primitive),
 you can indicate its subelement after the element. For example,
   ```
@@ -629,3 +633,42 @@ In this example, the query generates FHIR resources for only the entries between
 ## Advanced Mapping
 
 ---
+
+### Mapping to a Profile
+
+Mapping can be performed directly to a specific `Profile` rather than the base  `StructureDefition`.
+The advantages are:
+  - Meta profile in a resource gets generated automatically.
+  - If validation is enabled, the resource will be validated against the profile in addition to the default validation.  
+
+In RDB2OL, provide the `URL` of the profile to the `class`:
+```js
+{
+    "class" : "http://hl7.org.nz/fhir/StructureDefinition/NzPatient",
+    <!--some lines hidden-->
+} 
+```
+Next, you need to provide the profile to `Conformance` by calling method `addStructureDefinition()` before creating an instance of `RDB2FHIR`:
+```java
+String profile = loadFile("src/test/resources/structuredefinition/StructureDefinition-NzPractitioner.json");
+StructureDefinition structureDefinition = (StructureDefinition) parser.parseResource(profile);
+conformance.addStructureDefinition("new-group", structureDefinition);
+
+RDB2FHIR rdb2FHIR = RDB2FHIRFactory.getInstance(conformance, databaseFetcher, fhirContext);
+```
+Alternatively, you can also load a package to `Conformance` by calling method `loadPackageFromPath()`:
+```java
+conformance.loadPackageFromPath("us-core", "src/test/resources/package/us-core.tgz")
+```
+
+The meta profile will then be added automatically to the generated resource:
+```js
+{
+  "resourceType" : "Patient",
+  "meta" : {
+    "profile" : ["http://hl7.org.nz/fhir/StructureDefinition/NzPatient"]
+  }
+  <!-- -->
+}
+```
+If needed, you can disable this behavior by calling method `disableAutoMetaProfile()` in class `Serializer`.

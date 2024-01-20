@@ -1,9 +1,12 @@
 package org.bayisehat.rdb2fhir.core.serialization;
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.validation.SingleValidationMessage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.bayisehat.rdb2fhir.core.fhir.Conformance;
+import org.bayisehat.rdb2fhir.core.fhir.ConformanceException;
 import org.bayisehat.rdb2fhir.core.fhir.HasConformance;
+import org.bayisehat.rdb2fhir.core.valueservice.InstanceIdentifier;
 import org.bayisehat.rdb2fhir.core.valueservice.InstanceIdentifierFactory;
 import org.bayisehat.rdb2fhir.core.valueservice.InstancePool;
 import org.hl7.fhir.r4.model.*;
@@ -16,6 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,7 +48,7 @@ class SerializerTest implements HasConformance {
         keyValueList.put("col1", "val1");
         instancePool.putInstance(structureDefinition, "", keyValueList, patient);
 
-        serializer = new Serializer(FhirContext.forR4().newJsonParser());
+        serializer = new Serializer(FhirContext.forR4().newJsonParser(), conformance);
 
     }
 
@@ -86,7 +90,7 @@ class SerializerTest implements HasConformance {
         keyValueList.put("col1", "val1");
         instancePool.putInstance(structureDefinition, "", keyValueList, patient);
 
-        serializer = new Serializer(FhirContext.forR4().newJsonParser());
+        serializer = new Serializer(FhirContext.forR4().newJsonParser(), conformance);
         String str = serializer.serialize(instancePool);
         assertEquals("{\"resourceType\":\"Patient\",\"name\":[{\"use\":\"official\",\"_family\":{\"extension\":[{\"url\":\"http://hl7.org/fhir/StructureDefinition/data-absent-reason\",\"valueCode\":\"masked\"}]},\"_given\":[{\"extension\":[{\"url\":\"http://hl7.org/fhir/StructureDefinition/data-absent-reason\",\"valueCode\":\"masked\"}]}]}]}", str);
     }
@@ -108,7 +112,7 @@ class SerializerTest implements HasConformance {
         keyValueList.put("col1", "val1");
         instancePool.putInstance(structureDefinition, "", keyValueList, patient);
 
-        serializer = new Serializer(FhirContext.forR4().newJsonParser().setPrettyPrint(true));
+        serializer = new Serializer(FhirContext.forR4().newJsonParser().setPrettyPrint(true), conformance);
         String str = serializer.serialize(instancePool);
         assertEquals("{\n" +
                 "  \"resourceType\": \"Patient\",\n" +
@@ -147,7 +151,7 @@ class SerializerTest implements HasConformance {
         keyValueList.put("col1", "val1");
         instancePool.putInstance(structureDefinition, "", keyValueList, patient);
 
-        serializer = new Serializer(FhirContext.forR4().newJsonParser());
+        serializer = new Serializer(FhirContext.forR4().newJsonParser(), conformance);
         serializer.disableRemovingArrayContainOnlyNull();
         String str = serializer.serialize(instancePool);
         assertEquals("{\"resourceType\":\"Patient\",\"name\":[{\"use\":\"official\",\"_family\":{\"extension\":[{\"url\":\"http://hl7.org/fhir/StructureDefinition/data-absent-reason\",\"valueCode\":\"masked\"}]},\"given\":[null],\"_given\":[{\"extension\":[{\"url\":\"http://hl7.org/fhir/StructureDefinition/data-absent-reason\",\"valueCode\":\"masked\"}]}]}]}", str);
@@ -202,6 +206,39 @@ class SerializerTest implements HasConformance {
 
         instancePool.putInstance(structureDefinition, "", keyValueList, new Patient()); //empty resource
 
+        String result = serializer.serialize(instancePool);
+        assertEquals("{\"resourceType\":\"Patient\"}", result);
+    }
+
+    @Test
+    void metaProfileAdded() throws IOException, ConformanceException {
+        instancePool = new InstancePool(new InstanceIdentifierFactory());
+
+        conformance.loadPackageFromPath("us-core", "src/test/resources/package/us-core.tgz");
+        StructureDefinition structureDefinition = conformance.getStructureDefinition("http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient");
+
+        HashMap<String, String> keyValue = new HashMap<>();
+        keyValue.put("col1", "1");
+
+        instancePool.putInstance(structureDefinition, "", keyValue, new Patient());
+
+        String result = serializer.serialize(instancePool);
+        assertEquals("{\"resourceType\":\"Patient\",\"meta\":{\"profile\":[\"http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient\"]}}", result);
+    }
+
+    @Test
+    void metaProfileAutoDisabled() throws IOException, ConformanceException {
+        instancePool = new InstancePool(new InstanceIdentifierFactory());
+
+        conformance.loadPackageFromPath("us-core", "src/test/resources/package/us-core.tgz");
+        StructureDefinition structureDefinition = conformance.getStructureDefinition("http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient");
+
+        HashMap<String, String> keyValue = new HashMap<>();
+        keyValue.put("col1", "1");
+
+        instancePool.putInstance(structureDefinition, "", keyValue, new Patient());
+
+        serializer.disableAutoMetaProfile();
         String result = serializer.serialize(instancePool);
         assertEquals("{\"resourceType\":\"Patient\"}", result);
     }

@@ -2,4 +2,4 @@
 
 0.0.2:
     - Adding support for CSV, txt
-    -
+    - adding meta profile automatically for mapping against a profile

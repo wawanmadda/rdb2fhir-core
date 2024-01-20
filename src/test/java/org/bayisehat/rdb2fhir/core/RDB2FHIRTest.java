@@ -62,7 +62,7 @@ class RDB2FHIRTest implements HasConformance, HasConnectionService, HasSampleSch
 
     @Test
     void transformRDF() throws Exception {
-        Serializer serializer = new Serializer(FhirContext.forR4().newJsonParser().setPrettyPrint(true));
+        Serializer serializer = new Serializer(FhirContext.forR4().newJsonParser().setPrettyPrint(true), conformance);
         RDB2FHIR = RDB2FHIRFactory.getInstance(conformance, fetcher, serializer, FhirContext.forR4());
         RDB2FHIR.setOutputFormat(org.bayisehat.rdb2fhir.core.RDB2FHIR.OutputFormat.RDF);
         String result = RDB2FHIR.transform(HelperTool.loadFile("src/test/resources/rdb2ol/sample1.json"));

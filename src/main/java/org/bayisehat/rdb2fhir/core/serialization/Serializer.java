@@ -1,15 +1,15 @@
 package org.bayisehat.rdb2fhir.core.serialization;
 
+import ca.uhn.fhir.context.support.DefaultProfileValidationSupport;
+import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.parser.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.bayisehat.rdb2fhir.core.fhir.Conformance;
 import org.bayisehat.rdb2fhir.core.valueservice.InstanceIdentifier;
 import org.bayisehat.rdb2fhir.core.valueservice.InstancePool;
 import org.hl7.fhir.instance.model.api.IBaseResource;
-import org.hl7.fhir.r4.model.Base;
-import org.hl7.fhir.r4.model.Bundle;
-import org.hl7.fhir.r4.model.Resource;
-import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.model.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,14 +23,22 @@ public class Serializer {
 
     private IParser parser;
 
+    private final Conformance conformanceService;
+
     /**
      * remove "[null]": when null value is the only value inside an array
      * */
     private boolean removingArrayContainOnlyNull = true;
 
+    /**
+     * if true, meta profile will be generated if mapping are performed against a profile
+     * */
+    private boolean autoMetaProfile = true;
 
-    public Serializer(IParser parser) {
+
+    public Serializer(IParser parser, Conformance conformance) {
         this.parser = parser;
+        conformanceService = conformance;
     }
 
 
@@ -53,6 +61,13 @@ public class Serializer {
                 bundle.setType(Bundle.BundleType.COLLECTION);
             }
             for (Map.Entry<InstanceIdentifier, Base> row : pathList.get("").entrySet()) {
+                //set meta profile if enabled
+                StructureDefinition structureDefinition = entry.getKey();
+                IValidationSupport validationSupport = conformanceService.getValidationSupportByStructureDefinition(structureDefinition);
+                if (autoMetaProfile && ! (validationSupport instanceof DefaultProfileValidationSupport)) {
+                    addMetaProfile(structureDefinition, (Resource) row.getValue());
+                }
+
                 if (single) {
                     // TODO: 28/09/23
                     if (removingArrayContainOnlyNull && parser instanceof JsonParser) {
@@ -102,10 +117,27 @@ public class Serializer {
         return  str.replaceAll("\\s*\"[A-Za-z]+\":\\s?\\[\\s?null\\s?\\],", "");
     }
 
+    private void addMetaProfile(StructureDefinition structureDefinition, Resource resource) {
+        Meta meta;
+        if (resource.hasMeta()) {
+            meta = resource.getMeta();
+        }else{
+            meta = new Meta();
+        }
+        resource.setMeta(meta.addProfile(structureDefinition.getUrl()));
+    }
 
+    /**
+     * Enable adding meta profile to resources automatically
+     * */
+    public boolean enableAutoMetaProfile() {
+        return autoMetaProfile = true;
+    }
 
-
-
-
-
+    /**
+     * Disable adding meta profile to resources automatically
+     * */
+    public void disableAutoMetaProfile() {
+        this.autoMetaProfile = false;
+    }
 }

@@ -45,7 +45,7 @@ public class RDB2FHIRFactory {
     public static RDB2FHIR getInstance(Conformance conformance, Fetchable fetcher, FhirContext fhirContext,
                                        ObjectMapper objectMapper) throws IOException {
         return getInstance(conformance, fetcher, fhirContext, objectMapper,
-                new Serializer(fhirContext.newJsonParser().setStripVersionsFromReferences(false))
+                new Serializer(fhirContext.newJsonParser().setStripVersionsFromReferences(false), conformance)
                 );
 
     }
