@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * This class manage mapping defined in quadruple
- * The values will be preprocessed (if needed), split into lazy and non-lazy path, and is ready to be assigned to model instances
+ * The values will be preprocessed (if needed), split into lazy and non-lazy path, and assigned them to model instances
  * Non-lazy paths will first  be assigned with values before lazy paths
  * */
 public class ValueManager {
