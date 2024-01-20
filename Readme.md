@@ -18,8 +18,8 @@ All you need to do is set up your mapping through  [**RDB2OL**](#rdb2ol) before 
 ---
 
 ## Help and Support
-For questions and support please use [telegram](https://t.me/kalussajan). 
-The issue tracker is for bug reports and feature discussions only.
+For questions and support please use [telegram](https://t.me/kalussajan) or [linkedin](https://www.linkedin.com/in/wawan-indrawan-madda-57b6ab293/). 
+The issue tracker is for bug reports and feature discussions.
 
 ---
 
@@ -54,16 +54,16 @@ A tool to generate FHIR resources from a relational database
 
 For example:
 ```shell
-% java -jar rdb2fhir.jar --db=POSTGRESQL --format=JSON --user=postgres --pass=postgres --url=localhost:5432/postgres /path/to/rdb2ol.json /path/to/output
+% java -jar rdb2fhir.jar --source=POSTGRESQL --format=JSON --user=postgres --pass=postgres --url=localhost:5432/postgres /path/to/rdb2ol.json /path/to/output
 ```
 
 For CSV or text files, you would provide the path to the folder containing the CSV or text files to `--url`:
 ```shell
-% java -jar rdb2fhir.jar --db=CSV --format=JSON --url=/path/to/csv/folder /path/to/rdb2ol.json /path/to/output
+% java -jar rdb2fhir.jar --source=CSV --format=JSON --url=/path/to/csv/folder /path/to/rdb2ol.json /path/to/output
 ```
 For txt or other file extensions, you also need to provide the file extension with the argument
 ```shell
-% java -jar rdb2fhir.jar --db=CSV --format=JSON --url=/path/to/csv/folder?separator=;&fileExtension=.txt /path/to/rdb2ol.json /path/to/output
+% java -jar rdb2fhir.jar --source=CSV --format=JSON --url=/path/to/csv/folder?separator=;&fileExtension=.txt /path/to/rdb2ol.json /path/to/output
 ```
 ___
 
