@@ -5,6 +5,8 @@
 ██╔══██╗██║  ██║██╔══██╗██╔═══╝ ██╔══╝  ██╔══██║██║██╔══██╗
 ██║  ██║██████╔╝██████╔╝███████╗██║     ██║  ██║██║██║  ██║
 ╚═╝  ╚═╝╚═════╝ ╚═════╝ ╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝
+
+              Relational Databases to FHIR 
 ```
 
 ---
@@ -70,7 +72,7 @@ For CSV or text files, you would provide the path to the folder containing the C
 ```
 For txt or other file extensions, you also need to provide the file extension with the argument
 ```shell
-% java -jar rdb2fhir.jar --source=CSV --format=JSON --url=/path/to/csv/folder?separator=;&fileExtension=.txt /path/to/rdb2ol.json /path/to/output
+% java -jar rdb2fhir.jar --source=CSV --format=JSON --url=/path/to/txt/folder?separator=;&fileExtension=.txt /path/to/rdb2ol.json /path/to/output
 ```
 ___
 
