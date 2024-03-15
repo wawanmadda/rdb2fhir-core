@@ -39,10 +39,15 @@ public class MappingFileGenerator {
 //            quintMapNode.put("class", conformanceService.getStructureDefinition(baseParser.getResourceType()).getUrl());
             quintMapNode.put("class", baseParser.getResourceType());
 
-            //table
-            ObjectNode tableNameNode = objectMapper.createObjectNode();
-            putTableName(tableNameNode, i);
-            quintMapNode.putIfAbsent("view", tableNameNode);
+            //table name
+//            ObjectNode tableNameNode = objectMapper.createObjectNode();
+//            putTableName(tableNameNode, i);
+//            quintMapNode.putIfAbsent("view", tableNameNode);
+
+            //query
+            ObjectNode queryNode = objectMapper.createObjectNode();
+            putQuery(queryNode, i);
+            quintMapNode.putIfAbsent("view", queryNode);
 
             //identifier
             ArrayNode identifierNode = objectMapper.createArrayNode();
@@ -61,6 +66,10 @@ public class MappingFileGenerator {
 
     private void putTableName(ObjectNode node, int i) {
         node.put("tableName", baseParser.getFileName() + "_" + i);
+    }
+
+    private void putQuery(ObjectNode node, int i) {
+        node.put("query", "select * from " + baseParser.getFileName() + "_" + i);
     }
 
     private void processMapping(LinkedHashSet<String> keyList, ObjectNode node) {
