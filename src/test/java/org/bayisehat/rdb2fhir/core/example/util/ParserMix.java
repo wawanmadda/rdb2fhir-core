@@ -120,16 +120,22 @@ public class ParserMix implements BaseParser {
     private void logInfo() throws IOException {
         int numberOfTables = containerKeyList.size();
 
-        int maxRows = 0;
+        int singleRowTable = 0;
+        boolean hasOneToMany = false;
+
         for (Map.Entry<String, ArrayList<LinkedHashMap<String, String>>> entry : containerKeyValueList.entrySet()) {
-            maxRows = Math.max(maxRows, entry.getValue().size());
+            if (entry.getValue().size() > 1) {
+                hasOneToMany = true;
+            } else {
+                singleRowTable++;
+            }
         }
 
         boolean hasConstantAssignment = id != null;
-        hasImplicitIndex = maxRows > 1;
+        boolean hasOneToOne = singleRowTable > 1;
 
-        String info = String.join("\t", fileName, resourceType, String.valueOf(numberOfTables), String.valueOf(maxRows),
-                String.valueOf(hasExplicitIndex), String.valueOf(hasImplicitIndex),
+        String info = String.join("\t", fileName, resourceType, String.valueOf(numberOfTables), String.valueOf(hasOneToOne),
+                String.valueOf(hasOneToMany),
                 String.valueOf(hasConstantAssignment), String.valueOf(upperCaseList.size()));
         System.out.println(info);
 

@@ -26,7 +26,7 @@ public class USMixTestSuite extends BaseSuite {
         BaseExampleTest.setExampleFolder(String.join(File.separator, "src","test","resources","example","us"));
         BaseExampleTest.setRdb2olFolder(String.join(File.separator, "rdb2ol","us","mix"));
 
-        //BaseExampleTest.enableLogging();
+        BaseExampleTest.enableLogging();
     }
 
 }
