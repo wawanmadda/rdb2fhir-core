@@ -47,7 +47,7 @@ public class BaseExampleTest implements HasConnectionService, HasConformance, Ha
     }
 
     public enum TEST_TYPE {
-        FLAT, MIX, MULTI
+        MIX
     }
 
     private void setDefault() {
@@ -87,18 +87,6 @@ public class BaseExampleTest implements HasConnectionService, HasConformance, Ha
         objectMapper.setNodeFactory(JsonNodeFactory.withExactBigDecimals(true));
         objectMapper.configure(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS, true);
 
-
-        if (testType == TEST_TYPE.FLAT) {
-            converterManager = new ConverterManager(new ParserFlat(objectMapper), new DbSeeder(sqlSessionFactory),
-                    new MappingFileGenerator(objectMapper, conformance),
-                    objectMapper,
-                    conformance,
-                    new Rdb2olFactory(new QuadrupleFactory(conformance), objectMapper)
-            );
-            converterManager.setOutputFolder(rdb2olFolder);
-            return;
-        }
-
         if (testType == TEST_TYPE.MIX) {
             converterManager = new ConverterManager(new ParserMix(objectMapper), new DbSeeder(sqlSessionFactory),
                     new MappingFileGenerator(objectMapper, conformance),
@@ -110,16 +98,6 @@ public class BaseExampleTest implements HasConnectionService, HasConformance, Ha
             return;
         }
 
-        if (testType == TEST_TYPE.MULTI) {
-            converterManager = new ConverterManager(new ParserMulti(objectMapper), new DbSeeder(sqlSessionFactory),
-                    new MappingFileGenerator(objectMapper, conformance),
-                    objectMapper,
-                    conformance,
-                    new Rdb2olFactory(new QuadrupleFactory(conformance), objectMapper)
-            );
-            converterManager.setOutputFolder(rdb2olFolder);
-            return;
-        }
 
     }
 
