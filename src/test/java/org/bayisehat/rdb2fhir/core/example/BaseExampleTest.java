@@ -142,9 +142,9 @@ public class BaseExampleTest implements HasConnectionService, HasConformance, Ha
     }
 
     protected void assertEqual(String file) throws Exception {
-//        JsonAssertions.assertThatJson(actual(file)).when(Option.IGNORING_ARRAY_ORDER).isEqualTo(expected(file));
+        JsonAssertions.assertThatJson(actual(file)).when(Option.IGNORING_ARRAY_ORDER).isEqualTo(expected(file));
 //        JsonAssertions.assertThatJson(actual(file)).isEqualTo(expected(file));
-        actual(file);
+//        actual(file);
     }
 
     public static void setDbSource(DB_SOURCE dbSource) {
