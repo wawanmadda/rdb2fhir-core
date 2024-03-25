@@ -32,7 +32,7 @@ public class R4MixTestSuite extends BaseSuite {
         BaseExampleTest.setExampleFolder(String.join(File.separator, "src","test","resources","example","r4"));
         BaseExampleTest.setRdb2olFolder(String.join(File.separator, "rdb2ol","r4","mix"));
 
-        BaseExampleTest.enableLogging();
+        //BaseExampleTest.enableLogging();
     }
 
 }

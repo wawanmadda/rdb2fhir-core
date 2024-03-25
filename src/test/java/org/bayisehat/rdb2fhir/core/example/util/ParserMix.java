@@ -137,9 +137,9 @@ public class ParserMix implements BaseParser {
         String info = String.join("\t", fileName, resourceType, String.valueOf(numberOfTables), String.valueOf(hasOneToOne),
                 String.valueOf(hasOneToMany),
                 String.valueOf(hasConstantAssignment), String.valueOf(upperCaseList.size()));
-        System.out.println(info);
+//        System.out.println(info);
 
-        //writeToFile(info);
+        writeToFile(info);
     }
 
     private void normalizeUnderscoreContainer() {
